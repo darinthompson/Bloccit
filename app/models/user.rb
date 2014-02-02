@@ -1,8 +1,5 @@
 class User < ActiveRecord::Base
   
-  u = User.find_by_email("darint07@gmail.com")
-  u.update_attribute(:role, 'admin')
-
   ROLES = %w[member moderator admin]
   def role?(base_role)
     role.nil? ? false : ROLES.index(base_role.to_s) <= ROLES.index(role)
