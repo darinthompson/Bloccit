@@ -9,11 +9,11 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-  end
+    authorize! :create, Post, message: "You need to be a member to create a new post."  end
 
   def create
     @post = current_user.posts.build(params[:post])
-    @post = Post.new(params[:post])
+    authorize! :create, @post, message: "You need to be signed up to do that."
     if @post.save
       flash[:notice] = "Post was saved."
       redirect_to @post
