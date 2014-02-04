@@ -22,3 +22,4 @@ class User < ActiveRecord::Base
   has_many :posts
   before_create :set_member
 end
+
