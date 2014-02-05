@@ -8,6 +8,8 @@
       <%= @post.user.name %>
     </small>
     <p><%= markdown @post.body %></p>
+    <%= image_tag(@post.image.url) if @post.image.url %>
+
   </div>
   <div class="span4">
     <% if can? :edit, @post %>
