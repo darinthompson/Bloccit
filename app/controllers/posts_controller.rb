@@ -2,7 +2,10 @@ class PostsController < ApplicationController
   def show
     @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:id])
+    @comments = @post.comments.reverse
+    @comment = current_user.comments.new
   end
+
 
   def new
     @topic = Topic.find(params[:topic_id])
