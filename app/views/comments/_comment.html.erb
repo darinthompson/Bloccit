@@ -1,5 +1,15 @@
-<p><%= comment.body %>
+<div class ="media">
+  <%= link_to '#', class: 'pull-left' do %>
+    <%= image_tag(comment.user.avatar.small.url) if comment.user.avatar? %>
+  <% end %>
+  <div class ="media-body">
+
+
 <small class="alert-info">submitted <%= time_ago_in_words(@post.created_at) %> ago by 
-      <%= @post.user.name %>
+  <% if can? :destroy, comment %>
+    | <%= link_to "Delete", [@topic, @post, comment], method: :delete %>
+  <% end %>
 </small>
-</p>
+<p><%= comment.body %></p>
+
+
