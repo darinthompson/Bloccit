@@ -12,11 +12,14 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:facebook]
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :provider, :uid, :avatar
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, 
+  :provider, :uid, :avatar, :email_favorites
+
   # attr_accessible :title, :body
   has_many :posts
   has_many :comments
   has_many :votes, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   before_create :set_member
   mount_uploader :avatar, AvatarUploader #add this line
   
@@ -35,6 +38,10 @@ class User < ActiveRecord::Base
       user.save
     end
     user
+  end
+
+  def favorited(post)
+    self.favorites.where(post_id: post.id).first
   end
 
   private
