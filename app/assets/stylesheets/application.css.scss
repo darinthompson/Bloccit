@@ -1,6 +1,8 @@
 @import "bootstrap-custom";
 @import "bootstrap";
 
+body { color: #f9f9f9;}
+
 .user-info {
   margin-top: 9px;
 }
@@ -17,3 +19,27 @@
 .favorite { margin-top: 10px; }
 .voted { opacity: 0.5; }
 .comment-meta { opacity: 0.5; color: #f3f3f3;}
+
+.hero-unit { 
+  background-color: #333;
+  border: 3px solid tomato;
+  color: tomato;
+  -webkit-box-shadow: 7px 7px 25px 0px rgba(00, 00, 00, 0.75);
+  -moz-box-shadow:    7px 7px 25px 0px rgba(00, 00, 00, 0.75);
+  box-shadow:         7px 7px 25px 0px rgba(00, 00, 00, 0.75);
+}
+
+.btn{
+  background-image: none;
+}
+
+a.btn.btn-primary.btn-large {
+  background-color: #333;
+  color: tomato;
+  border: 1px solid tomato
+}
+
+a.btn.btn-primary.btn-large:hover {
+  background-color: tomato;
+  color: #333;
+}
