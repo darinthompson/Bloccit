@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
 
- def create
+  def create
   puts "COMMENT CREATE = #{params.inspect}"
   @comment = Comment.new(params[:comment].merge({ user: current_user } ))
 

@@ -13,7 +13,7 @@ class TopicsController < ApplicationController
     @topic = Topic.find(params[:id])
     authorize! :read, @topic, message: "You need to be signed-in to do that."
     # @posts = @topic.posts
-    @posts = @topic.posts.paginate(page: params[:page], per_page: 10) # add this line
+    @posts = @topic.posts.includes(:user).includes.(:comments).paginate(page: params[:page], per_page: 10) # add this line
   end
 
   def edit
