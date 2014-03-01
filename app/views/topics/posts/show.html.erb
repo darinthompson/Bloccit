@@ -11,10 +11,19 @@
     <%= image_tag(@post.image.url) if @post.image.url %>
     <h4>Comments:</h4>
     <%#= render @comments.reverse %>
-    <%= render partial: 'comments/comment', collection: @comments, locals: { topic: @topic, post: @post } %>
+    <%= render partial: 'comments/comment', collection: @comments %>
     <% unless @comment.nil? %>
-      <%= render partial: 'comments/form', locals: { topic: @topic, post: @post, comment: @comment } %>
+      <% if can? :create, Comment %>
+        <hr/>
+
+        <a href="#" class="js-show-hide btn btn-primary btn-large" data-selector="js-new-comment">Add Comment</a>
+        <br/>
+        <div class="js-new-comment hide">
+        <h4>New Comment</h4>
+        <%= render partial: 'comments/form', locals: { topic: @topic, post: @post, comment: @comment } %>
+      <% end %>
     <% end %>
+      </div>
   </div>
   <div class="span4">
     <% if can? :edit, @post %>
