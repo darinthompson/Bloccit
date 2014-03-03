@@ -11,11 +11,13 @@
     <%= image_tag(@post.image.url) if @post.image.url %>
     <h4>Comments:</h4>
     <%#= render @comments.reverse %>
+    <h2 class='js-comment-count'><%= @comments.count %> Comments</h2>
+
     <%= render partial: 'comments/comment', collection: @comments %>
+    <hr/>
     <% unless @comment.nil? %>
       <% if can? :create, Comment %>
-        <hr/>
-
+        
         <a href="#" class="js-show-hide btn btn-primary btn-large" data-selector="js-new-comment">Add Comment</a>
         <br/>
         <div class="js-new-comment hide">
