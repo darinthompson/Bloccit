@@ -10,11 +10,12 @@
     <p><%= markdown @post.body %></p>
     <%= image_tag(@post.image.url) if @post.image.url %>
     <h4>Comments:</h4>
-    <%#= render @comments.reverse %>
-    <h2 class='js-comment-count'><%= @comments.count %> Comments</h2>
-
-    <%= render partial: 'comments/comment', collection: @comments %>
     <hr/>
+    <%#= render @comments.reverse %>
+    <h2 class='js-comments-count'><%= @comments.count %> Comments</h2>
+    <div class='js-comments'>
+      <%= render partial: 'comments/comment', collection: @comments %>
+    </div>
     <% unless @comment.nil? %>
       <% if can? :create, Comment %>
         
